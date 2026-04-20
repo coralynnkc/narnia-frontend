@@ -1,0 +1,200 @@
+sample_id,sentence_id,predicted_entities
+1,1,[]
+1,2,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,3,[]
+1,4,[]
+1,5,"[{""text"": ""Susan"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,6,"[{""text"": ""Ed"", ""label"": ""ADDRESSED""}, {""text"": ""Susan"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,7,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,8,"[{""text"": ""Professor"", ""label"": ""MENTIONED_ONLY""}]"
+1,9,"[{""text"": ""Peter"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,10,[]
+1,11,"[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}]"
+1,12,[]
+1,13,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}, {""text"": ""Faun"", ""label"": ""MENTIONED_ONLY""}]"
+1,14,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}, {""text"": ""Faun"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,15,[]
+1,16,[]
+1,17,"[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}, {""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,18,"[{""text"": ""Faun"", ""label"": ""ADDRESSED""}]"
+1,19,"[{""text"": ""Mrs. Macready"", ""label"": ""MENTIONED_ONLY""}]"
+1,20,"[{""text"": ""Faun"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,21,"[{""text"": ""Mother"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Edmund"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,22,"[{""text"": ""Nymphs"", ""label"": ""ACTIVE_PERFORMER""}, {""text"": ""Dryads"", ""label"": ""ACTIVE_PERFORMER""}, {""text"": ""Fauns"", ""label"": ""ACTIVE_PERFORMER""}, {""text"": ""Stag"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Red Dwarfs"", ""label"": ""ACTIVE_PERFORMER""}, {""text"": ""Silenus"", ""label"": ""ACTIVE_PERFORMER""}, {""text"": ""Bacchus"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,23,[]
+1,24,[]
+1,25,[]
+1,26,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,27,[]
+1,28,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}, {""text"": ""Edmund"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,29,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,30,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,31,[]
+1,32,[]
+1,33,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,34,[]
+1,35,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,36,"[{""text"": ""Edmund"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,37,[]
+1,38,[]
+1,39,[]
+1,40,[]
+1,41,[]
+1,42,"[{""text"": ""Susan"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,43,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,44,[]
+1,45,"[{""text"": ""Tumnus"", ""label"": ""MENTIONED_ONLY""}]"
+1,46,"[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}, {""text"": ""Lucy"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,47,[]
+1,48,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,49,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,50,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,51,[]
+1,52,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,53,"[{""text"": ""Ed"", ""label"": ""ADDRESSED""}, {""text"": ""Susan"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,54,"[{""text"": ""Peter"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Susan"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Edmund"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Lucy"", ""label"": ""MENTIONED_ONLY""}]"
+1,55,[]
+1,56,[]
+1,57,"[{""text"": ""Lucy"", ""label"": ""MENTIONED_ONLY""}]"
+1,58,"[{""text"": ""Son of Adam"", ""label"": ""MISCELLANEOUS""}, {""text"": ""Daughter of Eve"", ""label"": ""MISCELLANEOUS""}]"
+1,59,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,60,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,61,[]
+1,62,[]
+1,63,"[{""text"": ""Susan"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,64,[]
+1,65,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}, {""text"": ""Faun"", ""label"": ""MENTIONED_ONLY""}]"
+1,66,"[{""text"": ""Peter"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,67,"[{""text"": ""Mother"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Edmund"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,68,"[{""text"": ""Faun"", ""label"": ""ADDRESSED""}]"
+1,69,[]
+1,70,"[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}]"
+1,71,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,72,"[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}, {""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,73,"[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}, {""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,74,[]
+1,75,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,76,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,77,[]
+1,78,"[{""text"": ""Silenus"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Nymphs"", ""label"": ""MENTIONED_ONLY""}]"
+1,79,[]
+1,80,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,81,"[{""text"": ""Faun"", ""label"": ""ADDRESSED""}]"
+1,82,[]
+1,83,[]
+1,84,[]
+1,85,[]
+1,86,[]
+1,87,[]
+1,88,"[{""text"": ""Faun"", ""label"": ""ADDRESSED""}, {""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,89,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,90,[]
+1,91,"[{""text"": ""Faun"", ""label"": ""MENTIONED_ONLY""}]"
+1,92,[]
+1,93,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,94,[]
+1,95,[]
+1,96,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,97,"[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,98,"[{""text"": ""Peter"", ""label"": ""ACTIVE_SPEAKER""}, {""text"": ""Lucy"", ""label"": ""MENTIONED_ONLY""}]"
+1,99,"[{""text"": ""Faun"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,100,"[{""text"": ""Ivy"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Margaret"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Betty"", ""label"": ""MENTIONED_ONLY""}]"
+1,101,[]
+1,102,[]
+1,103,[]
+1,104,"[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,105,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_PERFORMER""}, {""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,106,"[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,107,"[{""text"": ""Daughter of Eve"", ""label"": ""ADDRESSED""}]"
+1,108,[]
+1,109,[]
+1,110,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,111,"[{""text"": ""Daughter of Eve"", ""label"": ""ADDRESSED""}, {""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,112,[]
+1,113,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}, {""text"": ""Mr. Tumnus"", ""label"": ""MENTIONED_ONLY""}]"
+1,114,"[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}]"
+1,115,[]
+1,116,[]
+1,117,[]
+1,118,[]
+1,119,[]
+1,120,[]
+1,121,[]
+1,122,[]
+1,123,"[{""text"": ""Faun"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""White Witch"", ""label"": ""MENTIONED_ONLY""}]"
+1,124,"[{""text"": ""Daughter of Eve"", ""label"": ""ADDRESSED""}]"
+1,125,"[{""text"": ""Faun"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,126,[]
+1,127,"[{""text"": ""Faun"", ""label"": ""MENTIONED_ONLY""}]"
+1,128,[]
+1,129,[]
+1,130,"[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,131,"[{""text"": ""Professor"", ""label"": ""MENTIONED_ONLY""}]"
+1,132,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,133,[]
+1,134,[]
+1,135,"[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}]"
+1,136,"[{""text"": ""Edmund"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,137,"[{""text"": ""Faun"", ""label"": ""MENTIONED_ONLY""}]"
+1,138,[]
+1,139,[]
+1,140,[]
+1,141,"[{""text"": ""White Witch"", ""label"": ""MENTIONED_ONLY""}]"
+1,142,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,143,[]
+1,144,"[{""text"": ""Daughter of Eve"", ""label"": ""ADDRESSED""}]"
+1,145,[]
+1,146,[]
+1,147,[]
+1,148,[]
+1,149,[]
+1,150,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,151,[]
+1,152,"[{""text"": ""Edmund"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,153,[]
+1,154,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,155,"[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,156,[]
+1,157,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,158,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,159,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,160,"[{""text"": ""Lucy"", ""label"": ""MENTIONED_ONLY""}]"
+1,161,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,162,[]
+1,163,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,164,"[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,165,"[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,166,"[{""text"": ""Edmund"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,167,[]
+1,168,[]
+1,169,[]
+1,170,[]
+1,171,[]
+1,172,"[{""text"": ""Lucy"", ""label"": ""ADDRESSED""}, {""text"": ""Daughter of Eve"", ""label"": ""ADDRESSED""}, {""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,173,"[{""text"": ""White Witch"", ""label"": ""MENTIONED_ONLY""}]"
+1,174,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_PERFORMER""}]"
+1,175,[]
+1,176,[]
+1,177,[]
+1,178,[]
+1,179,[]
+1,180,[]
+1,181,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,182,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,183,"[{""text"": ""Peter"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,184,[]
+1,185,[]
+1,186,"[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,187,[]
+1,188,"[{""text"": ""Daughter of Eve"", ""label"": ""ADDRESSED""}, {""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,189,"[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}, {""text"": ""Faun"", ""label"": ""MENTIONED_ONLY""}]"
+1,190,"[{""text"": ""Peter"", ""label"": ""ACTIVE_SPEAKER""}]"
+1,191,"[{""text"": ""White Witch"", ""label"": ""MENTIONED_ONLY""}]"
+1,192,[]
+1,193,[]
+1,194,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+1,195,[]
+1,196,[]
+1,197,"[{""text"": ""Professor"", ""label"": ""MENTIONED_ONLY""}]"
+1,198,[]
+1,199,[]

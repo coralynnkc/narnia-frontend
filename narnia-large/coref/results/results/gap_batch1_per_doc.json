@@ -1,0 +1,8 @@
+
+[
+  {"doc_id": "development-1", "MUC": 0.0, "B3": 0.8, "CEAF_e": 0.2667, "CoNLL_F1": 0.3556},
+  {"doc_id": "development-2", "MUC": 0.0, "B3": 0.8, "CEAF_e": 0.2667, "CoNLL_F1": 0.3556},
+  {"doc_id": "development-3", "MUC": 0.0, "B3": 0.8, "CEAF_e": 0.2667, "CoNLL_F1": 0.3556},
+  {"doc_id": "development-4", "MUC": 0.0, "B3": 0.8, "CEAF_e": 0.2667, "CoNLL_F1": 0.3556},
+  {"doc_id": "development-5", "MUC": 0.0, "B3": 0.8, "CEAF_e": 0.2667, "CoNLL_F1": 0.3556}
+]

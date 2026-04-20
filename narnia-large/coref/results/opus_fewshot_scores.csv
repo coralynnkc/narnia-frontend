@@ -1,0 +1,2 @@
+model,sample,precision,recall,f1,tp,fp,fn
+opus_fewshot,1,0.8,0.8403,0.8197,100,25,19

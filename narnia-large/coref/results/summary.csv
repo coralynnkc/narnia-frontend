@@ -1,0 +1,7 @@
+model,precision,recall,f1
+opus,0.8699,0.8992,0.8843
+sonnet,0.7355,0.7479,0.7417
+chatgpt,0.2801,0.7815,0.4124
+opus_fewshot,0.8,0.8403,0.8197
+sonnet_fewshot,0.7481,0.8487,0.7953
+chatgpt_fewshot,0.4056,0.8487,0.5489

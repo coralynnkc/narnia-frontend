@@ -1,0 +1,24 @@
+Here are the full results:
+
+
+Overall Batch Metrics
+MetricPRF1MUC0.22220.17650.1967B³0.93330.95000.9416CEAFe0.93330.93330.9333CoNLL F1——0.6905
+
+Error Analysis
+4 Incorrect Merges — the model incorrectly linked two gold-separate entities into one cluster:
+
+dev-13: pred cluster {(56,58), (60,60)} merges two entities that gold keeps separate
+dev-16: pred cluster {(45,45), (58,58)} merges two singletons that gold never links
+dev-17: pred cluster {(74,74), (76,76)} links gold's singleton [74,74] to an entity it shouldn't
+dev-20: pred cluster {(68,68), (78,78)} conflates a singleton with a coreferent pair
+
+3 Incorrect Splits — mentions that gold chains together were left in separate pred clusters:
+
+dev-13: gold chain {(53,53), (60,60)} — (60,60) was absorbed into the wrong pred cluster
+dev-17: gold chain {(68,68), (76,76)} — split because (76,76) was grabbed by the erroneous merge
+dev-20: gold chain {(78,78), (104,104)} — (78,78) pulled into the wrong cluster, severing the link to (104,104)
+
+No pronoun-linking failures, missed mentions, or spurious mentions — all gold mentions are present and correctly bounded in the predictions; errors are purely cluster-assignment errors, not span-detection errors.
+
+Interpretation
+The MUC F1 of 0.197 is deceptively low. MUC only gets credit for correctly linked pairs; since most gold clusters in this dataset are singletons or pairs with exactly one link, the denominator is very small and any mis-link hits hard. The model gets near-perfect B³ (0.942) and CEAFe (0.933) because mention identity is almost entirely correct — the 4 merge errors are the only real mistakes across 20 documents.

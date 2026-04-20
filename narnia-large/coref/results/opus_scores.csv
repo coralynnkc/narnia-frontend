@@ -1,0 +1,2 @@
+model,sample,precision,recall,f1,tp,fp,fn
+opus,1,0.8699,0.8992,0.8843,107,16,12

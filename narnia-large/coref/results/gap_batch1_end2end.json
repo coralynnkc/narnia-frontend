@@ -1,0 +1,31 @@
+{
+  "experiment": "gap_batch1_end_to_end",
+  "setup": {
+    "dataset": "GAP (converted to cluster format)",
+    "num_documents": 20,
+    "mode": "end-to-end",
+    "model": "ChatGPT web",
+    "notes": "Model predicted singleton clusters (no linking)"
+  },
+  "metrics": {
+    "MUC": {
+      "f1": 0.0
+    },
+    "B3": {
+      "f1": 0.8
+    },
+    "CEAF_e": {
+      "f1": 0.2667
+    },
+    "CoNLL_F1": 0.3556
+  },
+  "interpretation": {
+    "summary": "Model failed to form coreference clusters, predicting mostly singleton mentions.",
+    "key_findings": [
+      "MUC = 0 indicates no correct coreference links",
+      "B3 remains high due to mention overlap",
+      "CEAF penalizes cluster fragmentation",
+      "Overall CoNLL F1 reflects weak clustering performance"
+    ]
+  }
+}

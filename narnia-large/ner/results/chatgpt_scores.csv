@@ -1,0 +1,2 @@
+model,sample,precision,recall,f1,tp,fp,fn
+chatgpt,1,0.5263,0.6612,0.5861,80,72,41

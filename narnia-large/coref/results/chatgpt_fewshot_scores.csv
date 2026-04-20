@@ -1,0 +1,2 @@
+model,sample,precision,recall,f1,tp,fp,fn
+chatgpt_fewshot,1,0.4056,0.8487,0.5489,101,148,18

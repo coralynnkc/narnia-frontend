@@ -1,0 +1,2 @@
+model,sample,precision,recall,f1,tp,fp,fn
+gemini_fewshot,1,0.7518,0.876,0.8092,106,35,15

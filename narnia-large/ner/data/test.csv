@@ -1,0 +1,41 @@
+sentence_id,sentence,entities
+80,"He was only a little taller than Lucy herself and he carried over his head an umbrella , white with snow .","[{""text"": ""Lucy"", ""label"": ""MENTIONED_ONLY""}]"
+90,"Good evening , said Lucy .",[]
+30,"I say , let 's go and explore to - morrow .",[]
+153,"It 's no good _now_ , you know ,  said the Faun , laying down his flute and shaking his head at her very sorrowfully .","[{""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+64,"I wonder is that more moth - balls ? she thought , stooping down to feel it with her hands .","[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+122,"Thank you very much , Mr. Tumnus ,  said Lucy .","[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}, {""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}]"
+39,Snakes ! said Edmund .,"[{""text"": ""Edmund"", ""label"": ""ACTIVE_SPEAKER""}]"
+54,"She stayed behind because she thought it would be worth while trying the door of the wardrobe , even though she felt almost sure that it would be locked .",[]
+141,"Now , Daughter of Eve !  said the Faun .","[{""text"": ""Daughter of Eve"", ""label"": ""ADDRESSED""}, {""text"": ""Faun"", ""label"": ""ACTIVE_SPEAKER""}]"
+41,"But when next morning came , there was a steady rain falling , so thick that when you looked out of the window you could see neither the mountains nor the woods nor even the stream in the garden .",[]
+92,When he had finished he made her a little bow .,[]
+26,"It 's only a bird , silly , said Edmund .","[{""text"": ""Edmund"", ""label"": ""ACTIVE_SPEAKER""}]"
+24,What 's that noise ? said Lucy suddenly .,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+71,"Lucy felt a little frightened , but she felt very inquisitive and excited as well .","[{""text"": ""Lucy"", ""label"": ""ACTIVE_THOUGHT""}]"
+168,"And even when Lucy went over and put her arms round him and lent him her handkerchief , he did not stop .","[{""text"": ""Lucy"", ""label"": ""ACTIVE_PERFORMER""}]"
+76,"She began to walk forward , _crunch - crunch_ , over the snow and through the wood towards the other light .",[]
+194,Always winter and never Christmas ; think of that !,[]
+28,This is going to be a wonderful place for birds .,[]
+171,Do stop .,[]
+6,"He himself was a very old man with shaggy white hair , which grew over most of his face as well as on his head , and they liked him almost at once ; but on the first evening when he came out to meet them at the front door he was so odd - looking that Lucy ( who was the youngest ) was a little afraid of him , and Edmund ( who was the next youngest ) wanted to laugh and had to keep on pretending he was blowing his nose to hide it .","[{""text"": ""Lucy"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Edmund"", ""label"": ""MENTIONED_ONLY""}]"
+2,This story is about something that happened to them when they were sent away from London during the war because of the air - raids .,[]
+82,"He also had a tail , but Lucy did not notice this at first because it was neatly caught up over the arm that held the umbrella so as to keep it from trailing in the snow .",[]
+129,"Now -- off we go . """,[]
+174,What on earth are you crying about ?,[]
+55,"To her surprise it opened quite easily , and two moth - balls dropped out .",[]
+142,And really it was a wonderful tea .,[]
+175,"Oh -- oh -- oh !  sobbed Mr. Tumnus , "" I 'm crying because I 'm such a bad Faun . ""","[{""text"": ""Mr. Tumnus"", ""label"": ""ACTIVE_SPEAKER""}]"
+180,"No , I 'm a bad Faun .","[{""text"": ""Faun"", ""label"": ""ADDRESSED""}]"
+5,"( Their names were Ivy , Margaret and Betty , but they do not come into the story much . )","[{""text"": ""Ivy"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Margaret"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Betty"", ""label"": ""MENTIONED_ONLY""}]"
+91,But the Faun was so busy picking up his parcels that at first he did not reply .,"[{""text"": ""Faun"", ""label"": ""ACTIVE_PERFORMER""}]"
+18,Had n't we all better go to bed ? said Lucy .,"[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+158,"But a moment later she asked , "" Mr. Tumnus !","[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}]"
+166,"Dear Mr. Tumnus , do tell me what is wrong .","[{""text"": ""Mr. Tumnus"", ""label"": ""ADDRESSED""}]"
+67,"Why , it is just like branches of trees ! exclaimed Lucy .","[{""text"": ""Lucy"", ""label"": ""ACTIVE_SPEAKER""}]"
+156,I 've got to go home at once .,[]
+103,I am delighted .,[]
+65,"But instead of feeling the hard , smooth wood of the floor of the wardrobe , she felt something soft and powdery and extremely cold , "" This is very queer , "" she said , and went on a step or two further .",[]
+36,There 'll be hawks .,[]
+51,And shortly after that they looked into a room that was quite empty except for one big wardrobe ; the sort that has a looking - glass in the door .,[]
+190,The White Witch ?,"[{""text"": ""White Witch"", ""label"": ""MENTIONED_ONLY""}]"
