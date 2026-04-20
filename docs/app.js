@@ -336,6 +336,7 @@ function renderDonutChart(char) {
                 text: `${label}  ${((data[i]/total)*100).toFixed(0)}%`,
                 fillStyle: chart.data.datasets[0].backgroundColor[i],
                 strokeStyle: '#1a1d27',
+                fontColor: '#e8e8f0',
                 hidden: data[i] === 0,
                 index: i,
               }));
