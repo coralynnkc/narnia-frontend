@@ -27,7 +27,7 @@
       <h1 class="meth-title">From raw text to annotated corpus</h1>
       <p class="meth-lead">
         Traditional NLP pipelines require task-specific engineering — custom NER models,
-        hand-crafted rules, separate coreference resolvers — for each new annotation schema.
+        hand-crafted rules, separate entity recognizers — for each new annotation schema.
         This project demonstrates that a general-purpose LLM can handle a novel, multi-part
         annotation task out of the box, with no fine-tuning and no labeled training data.
       </p>
@@ -75,14 +75,14 @@ They were sent to the house of an old Professor who lived in the heart of the co
           <h2 class="step-title">Task definition — two sub-tasks in one prompt</h2>
           <p class="step-desc">
             The annotation task combines two traditionally separate NLP problems into a single
-            pass: <strong>coreference resolution</strong> (which canonical character does this
+            pass: <strong>entity recognition</strong> (which canonical character does this
             surface mention refer to?) and <strong>agency-based NER</strong> (what role does
             the character play in this sentence?).
           </p>
 
           <div class="two-col">
             <div class="task-block">
-              <h4 class="task-block-title">Sub-task 1 — Coreference resolution</h4>
+              <h4 class="task-block-title">Sub-task 1 — Entity recognition</h4>
               <p>Map surface forms to canonical character identities. The model must learn that "Faun", "the Faun", and "Tumnus" all refer to the same character.</p>
               <div class="alias-table">
                 <div class="alias-row"><span class="alias-surface">"Faun", "the Faun", "Tumnus"</span><span class="alias-arrow">→</span><span class="alias-canon">Mr. Tumnus</span></div>
@@ -130,7 +130,7 @@ They were sent to the house of an old Professor who lived in the heart of the co
 
           <div class="two-col">
             <div class="results-block">
-              <h4 class="results-title">Coreference resolution (199 sentences)</h4>
+              <h4 class="results-title">Entity recognition (199 sentences)</h4>
               <p class="results-sub">Resolve surface mentions to canonical character names</p>
               <table class="results-table">
                 <thead>
@@ -202,7 +202,7 @@ They were sent to the house of an old Professor who lived in the heart of the co
         <div class="step-body">
           <h2 class="step-title">Prompt design — combining both tasks in one pass</h2>
           <p class="step-desc">
-            The final prompt runs coreference resolution and agency classification together,
+            The final prompt runs entity recognition and agency classification together,
             returning structured CSV directly. No intermediate steps, no post-processing pipeline.
           </p>
           <div class="step-example">
