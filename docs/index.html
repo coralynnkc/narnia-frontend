@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Narnia Character Annotation — LLM Proof of Concept</title>
-  <meta name="description" content="Claude Opus annotated all 17 chapters of The Lion, the Witch and the Wardrobe with zero task-specific training. This visualization is the evidence." />
-  <meta property="og:title" content="Narnia Character Annotation — LLM Proof of Concept" />
-  <meta property="og:description" content="Zero-shot annotation of 2,361 character mentions across 17 chapters. Explore the results." />
-  <meta property="og:type" content="website" />
+  <title>Narnia Character Annotation</title>
+  <meta name="description" content="Zero-shot LLM annotation of 2,361 character mentions across The Lion, the Witch and the Wardrobe." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
@@ -15,175 +12,133 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container">
-      <div class="header-eyebrow">Research Proof of Concept</div>
-      <h1 class="site-title">Narnia Character Annotation</h1>
-      <p class="site-subtitle">
-        Claude Opus annotated all 17 chapters of <em>The Lion, the Witch and the Wardrobe</em>
-        with zero task-specific training — no fine-tuning, no labeled examples, just a prompt.
-        It identified <strong>2,361</strong> character mentions, resolved <strong>43</strong> characters
-        from dozens of surface aliases, and classified each mention into one of six agency roles.
-        <br /><span class="highlight">This visualization is the evidence.</span>
-      </p>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <span class="nav-title">Narnia Annotation</span>
+      <a href="methodology.html" class="nav-link">Methodology</a>
     </div>
-  </header>
+  </nav>
 
-  <!-- STATS BAR -->
-  <section class="stats-bar">
-    <div class="container">
-      <div class="stats-grid" id="stats-grid">
-        <div class="stat-item">
-          <span class="stat-number" id="stat-sentences">2,404</span>
-          <span class="stat-label">sentences</span>
+  <main>
+    <!-- SEARCH HERO -->
+    <section class="search-hero">
+      <h1 class="hero-title">Character Annotation Explorer</h1>
+      <p class="hero-sub">
+        Claude Opus annotated <strong>2,361</strong> character mentions across
+        <em>The Lion, the Witch and the Wardrobe</em> — zero task-specific training.
+      </p>
+
+      <div class="search-wrap">
+        <div class="search-box-row">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <input
+            id="search-input"
+            type="text"
+            class="search-input"
+            placeholder="Search a character…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search for a character"
+            aria-autocomplete="list"
+            aria-controls="search-dropdown"
+          />
+          <button class="search-clear" id="search-clear" aria-label="Clear search" hidden>&times;</button>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" id="stat-mentions">2,361</span>
-          <span class="stat-label">character mentions</span>
+        <ul class="search-dropdown" id="search-dropdown" role="listbox" hidden></ul>
+      </div>
+    </section>
+
+    <!-- GLOBAL STATS (shown when no character selected) -->
+    <section class="global-view" id="global-view">
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-n" id="stat-sentences">2,404</div>
+          <div class="stat-l">sentences</div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" id="stat-characters">43</span>
-          <span class="stat-label">canonical characters</span>
+        <div class="stat-box">
+          <div class="stat-n" id="stat-mentions">2,361</div>
+          <div class="stat-l">character mentions</div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">17</span>
-          <span class="stat-label">chapters</span>
+        <div class="stat-box">
+          <div class="stat-n" id="stat-chars">43</div>
+          <div class="stat-l">canonical characters</div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">6</span>
-          <span class="stat-label">agency labels</span>
+        <div class="stat-box">
+          <div class="stat-n">17</div>
+          <div class="stat-l">chapters annotated</div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- OVERVIEW CHARTS -->
-  <section class="overview-section">
-    <div class="container">
-      <h2 class="section-title">How the model saw the book</h2>
-      <p class="section-desc">
-        Aggregate statistics across all 17 chapters. Each mention was classified into one of six
-        agency roles — capturing whether a character was speaking, acting, thinking, being addressed,
-        or simply referenced in narration.
-      </p>
-      <div class="overview-charts">
+      <div class="overview-charts-row">
         <div class="chart-card">
-          <h3 class="chart-title">Agency Label Distribution</h3>
-          <p class="chart-subtitle">How mentions were classified across all characters</p>
-          <div class="chart-wrap chart-wrap--horizontal">
+          <div class="chart-card-header">
+            <h3 class="chart-card-title">Agency label distribution</h3>
+            <p class="chart-card-sub">All 2,361 mentions classified into 6 roles</p>
+          </div>
+          <div class="chart-wrap-h">
             <canvas id="chart-label-dist"></canvas>
           </div>
         </div>
         <div class="chart-card">
-          <h3 class="chart-title">Chapter Entity Density</h3>
-          <p class="chart-subtitle">Character mentions per sentence across 17 chapters</p>
+          <div class="chart-card-header">
+            <h3 class="chart-card-title">Mentions per sentence by chapter</h3>
+            <p class="chart-card-sub">Higher density = more character-dense narrative</p>
+          </div>
           <div class="chart-wrap">
             <canvas id="chart-chapter-density"></canvas>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CHARACTER GRID -->
-  <section class="characters-section">
-    <div class="container">
-      <h2 class="section-title">Explore by character</h2>
-      <p class="section-desc">
-        Click any character to see their full annotation breakdown — mention count,
-        agency distribution, chapter-by-chapter presence, and the surface forms the model resolved.
-      </p>
-      <div class="character-grid" id="character-grid">
-        <!-- Cards injected by app.js -->
-      </div>
-    </div>
-  </section>
+    <!-- CHARACTER REPORT (shown when character selected) -->
+    <section class="report-view" id="report-view" hidden>
+      <button class="report-back" id="report-back">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="14" height="14">
+          <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        All characters
+      </button>
 
-  <!-- SUPPORTING CAST -->
-  <section class="supporting-section">
-    <div class="container">
-      <details class="supporting-accordion">
-        <summary class="supporting-summary">Supporting cast &amp; minor characters</summary>
-        <div class="supporting-grid" id="supporting-grid">
-          <!-- Minor character chips injected by app.js -->
-        </div>
-      </details>
-    </div>
-  </section>
+      <div class="report-header">
+        <div class="report-eyebrow" id="report-eyebrow">Character</div>
+        <h2 class="report-name" id="report-name"></h2>
+        <div class="report-pills" id="report-pills"></div>
+      </div>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-block">
-          <h4 class="footer-heading">Method</h4>
-          <p>
-            Claude Opus was prompted chapter-by-chapter with label definitions and a small
-            alias mapping. No examples from this text were used in training. The model returned
-            structured CSV with character identities and agency labels per sentence.
-          </p>
-        </div>
-        <div class="footer-block">
-          <h4 class="footer-heading">Why this matters</h4>
-          <p>
-            Pre-built NLP pipelines (NER + coreference + rule-based classifiers) require
-            task-specific engineering for each annotation schema. This experiment shows that a
-            general-purpose LLM can handle novel, nuanced annotation schemas — including subtle
-            distinctions like <em>ACTIVE_THOUGHT</em> vs <em>ACTIVE_PERFORMER</em> — out of the box,
-            with consistent results across a 17-chapter narrative.
-          </p>
-        </div>
-        <div class="footer-block">
-          <h4 class="footer-heading">Data</h4>
-          <p>
-            Source: <em>The Lion, the Witch and the Wardrobe</em> by C.S. Lewis.<br />
-            Annotation model: Claude Opus via Anthropic API.<br />
-            No task-specific training.
-          </p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>No task-specific training. Just prompting.</span>
-      </div>
-    </div>
-  </footer>
+      <p class="report-blurb" id="report-blurb"></p>
 
-  <!-- DETAIL PANEL -->
-  <div class="panel-overlay" id="panel-overlay" aria-hidden="true"></div>
-  <aside class="detail-panel" id="detail-panel" aria-label="Character detail" aria-hidden="true">
-    <button class="panel-close" id="panel-close" aria-label="Close panel">&times;</button>
-    <div class="panel-content">
-      <div class="panel-header">
-        <div class="panel-eyebrow" id="panel-eyebrow">Character</div>
-        <h2 class="panel-name" id="panel-name"></h2>
-        <div class="panel-meta" id="panel-meta"></div>
-      </div>
-      <p class="panel-blurb" id="panel-blurb"></p>
-      <div class="panel-charts">
-        <div class="panel-chart-block">
-          <h4 class="panel-chart-title">Agency Breakdown</h4>
+      <div class="report-charts">
+        <div class="report-chart-block">
+          <h4 class="report-chart-title">Agency breakdown</h4>
           <div class="donut-wrap">
-            <canvas id="chart-detail-donut"></canvas>
+            <canvas id="chart-donut"></canvas>
           </div>
         </div>
-        <div class="panel-chart-block">
-          <h4 class="panel-chart-title">Chapter Presence</h4>
+        <div class="report-chart-block">
+          <h4 class="report-chart-title">Mentions by chapter</h4>
           <div class="bar-wrap">
-            <canvas id="chart-detail-chapters"></canvas>
+            <canvas id="chart-chapters"></canvas>
           </div>
         </div>
       </div>
-      <div class="panel-aliases" id="panel-aliases-block">
-        <h4 class="panel-aliases-title">Surface forms resolved by the model</h4>
+
+      <div class="report-aliases" id="report-aliases">
+        <h4 class="aliases-title">Surface forms resolved by the model</h4>
         <div class="alias-chips" id="alias-chips"></div>
       </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Annotation by Claude Opus · Zero task-specific training ·</span>
+      <a href="methodology.html" class="footer-link">How it works →</a>
     </div>
-  </aside>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="app.js"></script>

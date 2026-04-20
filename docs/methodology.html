@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology — Narnia Character Annotation</title>
+  <meta name="description" content="How we used Claude Opus to annotate character mentions in The Lion, the Witch and the Wardrobe with zero task-specific training." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-title nav-title--link">Narnia Annotation</a>
+      <span class="nav-link nav-link--active">Methodology</span>
+    </div>
+  </nav>
+
+  <main class="meth-main">
+
+    <!-- HERO -->
+    <section class="meth-hero">
+      <div class="meth-eyebrow">Research Methodology</div>
+      <h1 class="meth-title">From raw text to annotated corpus</h1>
+      <p class="meth-lead">
+        Traditional NLP pipelines require task-specific engineering — custom NER models,
+        hand-crafted rules, separate coreference resolvers — for each new annotation schema.
+        This project demonstrates that a general-purpose LLM can handle a novel, multi-part
+        annotation task out of the box, with no fine-tuning and no labeled training data.
+      </p>
+      <div class="meth-claim">
+        The claim: <strong>LLMs are more general than pre-defined NLP pipelines.</strong>
+      </div>
+    </section>
+
+    <!-- PIPELINE STEPS -->
+    <section class="pipeline">
+
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="step-marker">
+          <span class="step-num">1</span>
+        </div>
+        <div class="step-body">
+          <h2 class="step-title">Raw data — the source text</h2>
+          <p class="step-desc">
+            The full text of <em>The Lion, the Witch and the Wardrobe</em> was split into
+            17 chapter files, one sentence per line. Each sentence was assigned a sequential
+            <code>sentence_id</code> within its chapter. No pre-annotation, no preprocessing
+            beyond sentence splitting.
+          </p>
+          <div class="step-example">
+            <div class="example-label">chapters/chapter_1.txt (excerpt)</div>
+            <pre class="code-block">Once there were four children whose names were Peter , Susan , Edmund and Lucy .
+This story is about something that happened to them when they were sent away from London during the war .
+They were sent to the house of an old Professor who lived in the heart of the country .</pre>
+          </div>
+          <div class="step-stat-row">
+            <div class="step-stat"><span class="step-stat-n">17</span><span class="step-stat-l">chapters</span></div>
+            <div class="step-stat"><span class="step-stat-n">2,404</span><span class="step-stat-l">sentences</span></div>
+            <div class="step-stat"><span class="step-stat-n">89–170</span><span class="step-stat-l">sentences per chapter</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="step-marker">
+          <span class="step-num">2</span>
+        </div>
+        <div class="step-body">
+          <h2 class="step-title">Task definition — two sub-tasks in one prompt</h2>
+          <p class="step-desc">
+            The annotation task combines two traditionally separate NLP problems into a single
+            pass: <strong>coreference resolution</strong> (which canonical character does this
+            surface mention refer to?) and <strong>agency-based NER</strong> (what role does
+            the character play in this sentence?).
+          </p>
+
+          <div class="two-col">
+            <div class="task-block">
+              <h4 class="task-block-title">Sub-task 1 — Coreference resolution</h4>
+              <p>Map surface forms to canonical character identities. The model must learn that "Faun", "the Faun", and "Tumnus" all refer to the same character.</p>
+              <div class="alias-table">
+                <div class="alias-row"><span class="alias-surface">"Faun", "the Faun", "Tumnus"</span><span class="alias-arrow">→</span><span class="alias-canon">Mr. Tumnus</span></div>
+                <div class="alias-row"><span class="alias-surface">"the White Witch", "the Queen", "Her Imperial Majesty"</span><span class="alias-arrow">→</span><span class="alias-canon">Jadis</span></div>
+                <div class="alias-row"><span class="alias-surface">"Ed", "Edmund"</span><span class="alias-arrow">→</span><span class="alias-canon">Edmund Pevensie</span></div>
+                <div class="alias-row"><span class="alias-surface">"the Lion", "Aslan"</span><span class="alias-arrow">→</span><span class="alias-canon">Aslan</span></div>
+                <div class="alias-row"><span class="alias-surface">"the Professor", "Professor Kirke"</span><span class="alias-arrow">→</span><span class="alias-canon">Professor Digory Kirke</span></div>
+              </div>
+            </div>
+            <div class="task-block">
+              <h4 class="task-block-title">Sub-task 2 — Agency classification</h4>
+              <p>Classify each mention by the character's narrative role in that sentence, using 6 labels with nuanced distinctions.</p>
+              <div class="label-list">
+                <div class="label-item"><span class="label-badge" style="background:#4a9eff22;color:#4a9eff;border-color:#4a9eff44">ACTIVE_SPEAKER</span> Character is speaking</div>
+                <div class="label-item"><span class="label-badge" style="background:#5dd87a22;color:#5dd87a;border-color:#5dd87a44">ACTIVE_PERFORMER</span> Physical action</div>
+                <div class="label-item"><span class="label-badge" style="background:#b47aff22;color:#b47aff;border-color:#b47aff44">ACTIVE_THOUGHT</span> Internal state or feeling</div>
+                <div class="label-item"><span class="label-badge" style="background:#ff7a5a22;color:#ff7a5a;border-color:#ff7a5a44">ADDRESSED</span> Spoken to directly</div>
+                <div class="label-item"><span class="label-badge" style="background:#7a7a8a22;color:#7a7a8a;border-color:#7a7a8a44">MENTIONED_ONLY</span> Third-person reference</div>
+                <div class="label-item"><span class="label-badge" style="background:#3a3a4a;color:#8b8fa8;border-color:#2d3148">MISCELLANEOUS</span> Species/group label</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-callout">
+            <strong>The key challenge:</strong> These distinctions are subtle. "Lucy was tired" →
+            <code>ACTIVE_THOUGHT</code>, not <code>ACTIVE_PERFORMER</code>. "Oh, Mr. Tumnus!" →
+            <code>ADDRESSED</code>, not <code>MENTIONED_ONLY</code>. Pre-built NER systems have
+            no label for these distinctions — they would need to be engineered from scratch.
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="step-marker">
+          <span class="step-num">3</span>
+        </div>
+        <div class="step-body">
+          <h2 class="step-title">Benchmark evaluation — does it actually work?</h2>
+          <p class="step-desc">
+            Before scaling to all 17 chapters, we evaluated models on a 200-sentence
+            manually-annotated benchmark — the same sentences, annotated by hand, used as
+            ground truth. Two sub-tasks were evaluated independently.
+          </p>
+
+          <div class="two-col">
+            <div class="results-block">
+              <h4 class="results-title">Coreference resolution (199 sentences)</h4>
+              <p class="results-sub">Resolve surface mentions to canonical character names</p>
+              <table class="results-table">
+                <thead>
+                  <tr><th>Model</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="row-best"><td>Claude Opus</td><td>0.870</td><td>0.899</td><td><strong>0.884</strong></td></tr>
+                  <tr><td>Claude Sonnet</td><td>0.736</td><td>0.748</td><td>0.742</td></tr>
+                  <tr><td>ChatGPT</td><td>0.280</td><td>0.782</td><td>0.412</td></tr>
+                </tbody>
+              </table>
+              <div class="results-insight">
+                Opus resolves even difficult epithets like "Her Imperial Majesty" → Jadis and
+                "Daughter of Eve" (when addressing Lucy) → Lucy Pevensie. ChatGPT finds the
+                spans but mis-labels them (high recall, low precision).
+              </div>
+            </div>
+            <div class="results-block">
+              <h4 class="results-title">Agency NER (200 sentences)</h4>
+              <p class="results-sub">Identify mentions + classify agency label</p>
+              <table class="results-table">
+                <thead>
+                  <tr><th>Model</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="row-best"><td>Claude Opus</td><td>0.790</td><td>0.777</td><td><strong>0.783</strong></td></tr>
+                  <tr><td>Claude Sonnet</td><td>0.715</td><td>0.769</td><td>0.741</td></tr>
+                  <tr><td>Gemini</td><td>0.561</td><td>0.570</td><td>0.566</td></tr>
+                  <tr><td>ChatGPT</td><td>0.526</td><td>0.661</td><td>0.586</td></tr>
+                </tbody>
+              </table>
+              <div class="results-insight">
+                <code>ACTIVE_SPEAKER</code> is easiest (F1 0.88–0.94 for top models).
+                <code>MISCELLANEOUS</code> gets 0 F1 zero-shot — the distinction requires
+                seeing an example. Few-shot prompting recovers it to 0.67–0.80.
+              </div>
+            </div>
+          </div>
+
+          <div class="fewshot-row">
+            <div class="fewshot-card">
+              <div class="fewshot-label">Agency NER — Few-shot results</div>
+              <table class="results-table results-table--compact">
+                <thead>
+                  <tr><th>Model</th><th>Zero-shot F1</th><th>Few-shot F1</th><th>Gain</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Claude Sonnet</td><td>0.741</td><td>0.823</td><td class="gain">+0.082</td></tr>
+                  <tr><td>Claude Opus</td><td>0.783</td><td>0.809</td><td class="gain">+0.026</td></tr>
+                  <tr><td>Gemini</td><td>0.566</td><td>0.809</td><td class="gain">+0.244</td></tr>
+                  <tr><td>ChatGPT</td><td>0.586</td><td>0.797</td><td class="gain">+0.211</td></tr>
+                </tbody>
+              </table>
+              <div class="results-insight">
+                Few-shot examples dramatically help on <code>ADDRESSED</code> and
+                <code>MISCELLANEOUS</code> — the two labels with the subtlest distinctions.
+                Sonnet recall on ADDRESSED jumped from 0.375 → 0.833 with just 9 examples.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step">
+        <div class="step-marker">
+          <span class="step-num">4</span>
+        </div>
+        <div class="step-body">
+          <h2 class="step-title">Prompt design — combining both tasks in one pass</h2>
+          <p class="step-desc">
+            The final prompt runs coreference resolution and agency classification together,
+            returning structured CSV directly. No intermediate steps, no post-processing pipeline.
+          </p>
+          <div class="step-example">
+            <div class="example-label">Zero-shot prompt (chapter-level)</div>
+            <pre class="code-block">You are annotating a chapter from The Lion, the Witch and the Wardrobe for character agency.
+
+For each sentence, identify all character mentions and assign each one an agency label.
+Return ONLY a CSV with columns: sentence_id,sentence,entities
+where entities is a JSON list of {"text": "...", "canonical": "...", "label": "..."} objects.
+- "text" is the surface form of the mention as it appears in the sentence.
+- "canonical" is the character's consistent canonical name (resolve aliases).
+- "label" is the agency label for that sentence.
+No explanation. Do not skip sentences. Number sentences starting from 1.
+
+Valid labels: ACTIVE_SPEAKER, ACTIVE_PERFORMER, ACTIVE_THOUGHT, ADDRESSED, MENTIONED_ONLY, MISCELLANEOUS
+
+Key distinctions:
+- A character called by name in speech ("Oh, Mr. Tumnus!") is ADDRESSED, not MENTIONED_ONLY.
+- A character's feeling or internal state ("Lucy was tired") is ACTIVE_THOUGHT, not ACTIVE_PERFORMER.
+- "Son of Adam" / "Daughter of Eve" used as direct address → ADDRESSED; as species label → MISCELLANEOUS.
+- If a sentence has no character mentions, return [].
+
+Canonical name mappings (resolve these automatically):
+- Faun / the Faun / Tumnus → Mr. Tumnus
+- Ed → Edmund Pevensie
+- the White Witch / the Queen / Jadis / Her Imperial Majesty → Jadis
+- the Lion / Aslan → Aslan
+...</pre>
+          </div>
+          <div class="step-callout">
+            The output format is structured CSV — parseable, comparable, and ready for analysis
+            without any model-specific post-processing. The model handles tokenization,
+            span detection, alias resolution, and label classification in a single inference call.
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step">
+        <div class="step-marker">
+          <span class="step-num">5</span>
+        </div>
+        <div class="step-body">
+          <h2 class="step-title">Full-scale annotation — 17 chapters</h2>
+          <p class="step-desc">
+            Claude Opus processed all 17 chapters using the few-shot prompt.
+            Each chapter was sent as a single prompt — no chunking, no sliding window.
+            Results were saved as per-chapter CSVs and aggregated into a single corpus file.
+          </p>
+          <div class="step-example">
+            <div class="example-label">Output format (results/opus_chapter_1.csv excerpt)</div>
+            <pre class="code-block">sentence_id,sentence,entities
+1,"Once there were four children whose names were Peter , Susan , Edmund and Lucy .","[{""text"": ""Peter"", ""canonical"": ""Peter Pevensie"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Susan"", ""canonical"": ""Susan Pevensie"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Edmund"", ""canonical"": ""Edmund Pevensie"", ""label"": ""MENTIONED_ONLY""}, {""text"": ""Lucy"", ""canonical"": ""Lucy Pevensie"", ""label"": ""MENTIONED_ONLY""}]"
+6,"But the Faun continued sobbing as if his heart would break .","[{""text"": ""Faun"", ""canonical"": ""Mr. Tumnus"", ""label"": ""ACTIVE_PERFORMER""}]"
+12,"""Do n't go on talking like that ."" said Ed","[{""text"": ""Ed"", ""canonical"": ""Edmund Pevensie"", ""label"": ""ACTIVE_SPEAKER""}]"</pre>
+          </div>
+          <div class="step-stat-row">
+            <div class="step-stat"><span class="step-stat-n">2,361</span><span class="step-stat-l">mentions annotated</span></div>
+            <div class="step-stat"><span class="step-stat-n">43</span><span class="step-stat-l">canonical characters resolved</span></div>
+            <div class="step-stat"><span class="step-stat-n">0</span><span class="step-stat-l">task-specific training examples</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="step">
+        <div class="step-marker">
+          <span class="step-num">6</span>
+        </div>
+        <div class="step-body">
+          <h2 class="step-title">Analysis — what the annotations reveal</h2>
+          <p class="step-desc">
+            Aggregating across all chapters surfaces patterns that are hard to see from
+            reading alone. Three findings stand out.
+          </p>
+
+          <div class="findings">
+            <div class="finding">
+              <div class="finding-label">Finding 1</div>
+              <h4 class="finding-title">The Aslan/Jadis paradox</h4>
+              <p>
+                The two most powerful characters in the story have the <em>lowest</em> active
+                agency ratios — Aslan at 38.8% and Jadis at 39.4%. Both are more often
+                talked about than acting within individual sentences. The model captured this
+                structural feature of Lewis's storytelling without being told to look for it.
+              </p>
+            </div>
+            <div class="finding">
+              <div class="finding-label">Finding 2</div>
+              <h4 class="finding-title">Chapter density tracks narrative arc</h4>
+              <p>
+                Character mention density (mentions per sentence) peaks at chapters 8 and 15 —
+                the Beavers' escape and the final battle. Chapter 1 is the sparsest (0.72
+                mentions/sentence), reflecting its role as scene-setting with few character
+                interactions. The model's output is legible as a structural signal of narrative
+                intensity.
+              </p>
+            </div>
+            <div class="finding">
+              <div class="finding-label">Finding 3</div>
+              <h4 class="finding-title">Alias resolution holds across 17 chapters</h4>
+              <p>
+                Edmund and Lucy each receive ~411 mentions despite being referred to by dozens
+                of surface forms ("Ed", "Edmund", "the boy", "Son of Adam", "her brother",
+                etc.) across thousands of sentences. The tight mention counts reflect consistent
+                canonical name resolution — the model never drifts across long contexts.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-callout">
+            <strong>The result:</strong> A complete, structured, queryable annotation of a
+            17-chapter novel — produced by prompting a general-purpose LLM with a task
+            description and 9 examples. No fine-tuning. No custom pipeline. No task-specific
+            engineering.
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /pipeline -->
+
+    <div class="meth-footer-cta">
+      <a href="index.html" class="cta-btn">Explore the character data →</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Annotation by Claude Opus · <em>The Lion, the Witch and the Wardrobe</em> by C.S. Lewis</span>
+    </div>
+  </footer>
+
+</body>
+</html>
